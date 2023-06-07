@@ -1,0 +1,3 @@
+[submodule "uploader/pico-sdk"]
+	path = uploader/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk
