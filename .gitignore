@@ -1,0 +1,11 @@
+*.svg
+*.png
+sim
+dump.lxt
+default.cvcrc
+uploader/build
+*.hex
+runs
+impl
+*.o
+*.elf

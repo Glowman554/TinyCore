@@ -1,0 +1,16 @@
+0b0000: ADDI
+0b0001: ADD
+0b0010: SUBI
+0b0011: SUB
+0b0100: NAND
+0b0101: LDI (load intermediate)
+0b0110: MOV
+0b0111: LDM (ir0 <- ram[ir1])
+0b1000: LDMI (ir0 <- ram[im])
+0b1001: STM
+0b1010: STMI
+0b1011: JZI (jump zero) (jzi r0, 0xff)
+0b1100: JI (jump)
+0b1101: OUT
+0b1110: IN
+0b1111: HALT

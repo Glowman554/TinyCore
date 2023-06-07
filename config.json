@@ -1,0 +1,12 @@
+{
+    "DESIGN_NAME": "TinyCore",
+    "VERILOG_FILES": [
+        "src/alu.v",
+        "src/core.v"
+    ],
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 20.0,
+    "DESIGN_IS_CORE": true,
+
+	"FP_IO_MODE": 0
+}
