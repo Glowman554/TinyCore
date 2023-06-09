@@ -9,16 +9,20 @@ module TinyCore (
 	input [7:0] rdata,
 	output [7:0] addr,
 
+	output ramsel,
+
 	output reg [7:0] out,
 	input [7:0] in
 );
 
 	wire addr_mode = opcode == INSTRUCTION_LDM | opcode == INSTRUCTION_STM; // 1 == addr from reg, 0 == addr from im
 
-	assign addr = (state == STATE_FETCH0 | state == STATE_FETCH1) ? program_counter : addr_mode ? registers[ir1] : instruction_im;
+	assign addr = !(state == STATE_EXECUTE) ? program_counter : addr_mode ? registers[ir1] : instruction_im;
 
 	assign write = state == STATE_EXECUTE & (opcode == INSTRUCTION_STM | opcode == INSTRUCTION_STMI);
 	assign read = !write;
+
+	assign ramsel = state == STATE_EXECUTE; // 1 == data ram, 0 == code ram
 
 	assign wdata = registers[ir0];
 
@@ -142,7 +146,7 @@ localparam INSTRUCTION_HALT = 4'b1111; // 0xf
 						if (opcode == INSTRUCTION_HALT) begin
 								state <= STATE_HALT;
 							end else begin 
-							state <= STATE_FETCH0;
+								state <= STATE_FETCH0;
 							end
 						end
 				endcase

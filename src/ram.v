@@ -6,14 +6,16 @@ module TinyRAM (
 
 	input [7:0] wdata,
 	output [7:0] rdata,
-	input [7:0] addr
+	input [7:0] addr,
+
+	input select
 );
 	reg [7:0] memory [0:255];
 
-	assign rdata = read ? memory[addr] : 0;
+	assign rdata = (select & read) ? memory[addr] : 0;
 
 	always @(posedge clk) begin
-		if (write) begin
+		if (write & select) begin
 			memory[addr] <= wdata;
 		end
 	end

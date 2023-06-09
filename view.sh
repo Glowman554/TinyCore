@@ -1,6 +1,6 @@
 set -ex
 
-RUN=$PWD/runs/run2
+RUN=$PWD/runs/run3
 (
 	cd ~/openlane
 	python3 gui.py $RUN
